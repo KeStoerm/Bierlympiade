@@ -1,0 +1,28 @@
+.beer {
+  background: linear-gradient(to bottom, #bc7012 0%,#efd002 100%) 
+}
+
+.bubble {
+  animation-name: bubbling;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in;
+
+  &.bubble1 {
+    animation-delay: 1s;
+  }
+  &.bubble2 {
+    animation-delay: 3s;
+  }
+  &.bubble3 {
+    animation-delay: 4s;
+  }
+  &.bubble4 {
+    animation-delay: 1.5s;
+  }
+}
+
+@keyframes bubbling {
+  from {margin-bottom: 0;}
+  to {margin-bottom: 160%;}
+}
