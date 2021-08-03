@@ -34,7 +34,8 @@
     "workbox-streams": "^5.1.4"
   },
   "scripts": {
-    "start": "craco start",
+    "start": "npm install & craco start",
+    "start-dev": "craco start",
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject"
