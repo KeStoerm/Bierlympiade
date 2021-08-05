@@ -1,10 +1,8 @@
 import { BeerLogo } from "../components/logo/BeerLogo"
-import { games, pointBuckets } from "../data/gameData"
-import { generateGamePlan } from "../utils/gamePlanGenerationUtils"
 
 export const StartView = (): JSX.Element => {
   return <div className="main w-full md:w-1/2 flex justify-center flex-col items-center">
-    <div className="beerLogoWrapper w-32 h-32 mb-4" onClick={() => console.log(generateGamePlan(games, pointBuckets))}>
+    <div className="beerLogoWrapper w-40 h-40 mb-4">
       <BeerLogo />
     </div>
     <h2 className="text-accent text-3xl mb-12 headline">BIERlympiade</h2>
