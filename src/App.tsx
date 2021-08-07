@@ -4,6 +4,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+import { EventView } from './views/EventView';
 import { StartView } from './views/StartView';
 
 function App() {
@@ -11,6 +12,9 @@ function App() {
     <div className="App bg-secondary min-h-screen flex justify-center">
       <BrowserRouter>
         <Switch>
+          <Route path="/game">
+            <EventView />
+          </Route>
           <Route path="/">
             <StartView />
           </Route>
