@@ -4,8 +4,11 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+import { register } from './serviceWorkerRegistration';
 import { EventView } from './views/EventView';
 import { StartView } from './views/StartView';
+
+register();
 
 function App() {
   return (
