@@ -9,6 +9,9 @@ export const EventView = (): JSX.Element => {
   const sortedGames = flatten(map(generatedGames.filledPointBuckets, bucket => map(bucket.games, game => ({game, val: bucket.value}))));
 
   return <div className="w-screen md:w-1/2 ">
+    {`Alkoholbonus: ${generatedGames.alcBonus}`}
+    {`Geschicklichkeitsbonus: ${generatedGames.dexBonus}`}
+    {`Ausdauerbonus: ${generatedGames.endBonus}`}
     {map(sortedGames, gameWrapper => <div className="py-4"><GameCard game={gameWrapper.game} points={gameWrapper.val}/></div>)}
   </div>
 }
