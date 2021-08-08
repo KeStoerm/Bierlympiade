@@ -2,88 +2,110 @@ import { Games, PointBuckets } from "../types/gameTypes";
 
 export const games: Games = [
   {
-    name: "easy Game",
-    alcFactor: 1,
+    name: "Russisch Roulette",
+    alcFactor: 2,
     dexFactor: 1,
     endFactor: 1,
   },
   {
-    name: "alk Game",
-    alcFactor: 10,
-    dexFactor: 3,
-    endFactor: 1,
+    name: "Gruppenflunkyball",
+    alcFactor: 8,
+    dexFactor: 7,
+    endFactor: 3,
   },
   {
-    name: "dex Game",
-    alcFactor: 3,
-    dexFactor: 10,
-    endFactor: 1,
-  },
-  {
-    name: "end Game",
-    alcFactor: 1,
-    dexFactor: 3,
-    endFactor: 10,
-  },
-  {
-    name: "medi alk Game",
-    alcFactor: 5,
-    dexFactor: 2,
-    endFactor: 2,
-  },
-  {
-    name: "diff game Game",
-    alcFactor: 5,
+    name: "Kalüngeln",
+    alcFactor: 2,
     dexFactor: 5,
-    endFactor: 5,
+    endFactor: 1,
   },
   {
-    name: "fast hard Game",
-    alcFactor: 1,
-    dexFactor: 6,
-    endFactor: 6,
-  },
-  {
-    name: "easy mid Game",
-    alcFactor: 3,
+    name: "Brett vorm Kopf",
+    alcFactor: 4,
     dexFactor: 2,
-    endFactor: 2,
+    endFactor: 1,
   },
   {
-    name: "drink heavy dex Game",
+    name: "Looping Louey",
+    alcFactor: 10,
+    dexFactor: 8,
+    endFactor: 1,
+  },
+  {
+    name: "Männer-Gemeinschaftslüge",
+    alcFactor: 4,
+    dexFactor: 7,
+    endFactor: 3,
+  },
+  {
+    name: "Promillepoker",
     alcFactor: 6,
     dexFactor: 4,
+    endFactor: 2,
+  },
+  {
+    name: "Gegenstände raten",
+    alcFactor: 1,
+    dexFactor: 4,
+    endFactor: 2,
+  },
+  {
+    name: "Dodgeball",
+    alcFactor: 3,
+    dexFactor: 7,
+    endFactor: 8,
+  },
+  {
+    name: "Bottleflip",
+    alcFactor: 2,
+    dexFactor: 6,
+    endFactor: 2,
+  },
+  {
+    name: "Alkoholanschlag",
+    alcFactor: 4,
+    dexFactor: 1,
     endFactor: 1,
   },
   {
-    name: "good overall Game",
-    alcFactor: 3,
+    name: "Bierpong",
+    alcFactor: 5,
     dexFactor: 5,
     endFactor: 2,
   },
   {
-    name: "hard Game",
-    alcFactor: 8,
-    dexFactor: 8,
-    endFactor: 8,
+    name: "Kronkorken-Curling",
+    alcFactor: 2,
+    dexFactor: 10,
+    endFactor: 3,
+  },
+  {
+    name: "Staffelsauf",
+    alcFactor: 5,
+    dexFactor: 1,
+    endFactor: 10,
   },
 ]
 
 export const pointBuckets: PointBuckets = [
   {
+    value: 1,
+    amountOfAllowedGames: 3
+  },
+  {
     value: 2,
-    amountOfAllowedGames: 2
+    amountOfAllowedGames: 4
   },
   {
     value: 3,
     amountOfAllowedGames: 4
   },
   {
-    value: 5,
-    amountOfAllowedGames: 3
+    value: 4,
+    amountOfAllowedGames: 2
   },
   {
-    value: 7,
-    amountOfAllowedGames: 2
+    value: 6,
+    amountOfAllowedGames: 1
   },
 ]
