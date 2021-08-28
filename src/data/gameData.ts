@@ -1,4 +1,4 @@
-import { Games, PointBuckets } from "../types/gameTypes";
+import { GameDay, Games, PointBuckets, Team } from "../types/gameTypes";
 
 export const games: Games = [
   {
@@ -87,25 +87,51 @@ export const games: Games = [
   },
 ]
 
+export const gameDays: Array<GameDay> = [
+  {
+    name: "Freitag",
+    hoursToBePlayed: 5,
+  },
+  {
+    name: "Samstag",
+    hoursToBePlayed: 13,
+  },
+  {
+    name: "Sonntag",
+    hoursToBePlayed: 13,
+  },
+]
+
 export const pointBuckets: PointBuckets = [
   {
-    value: 1,
+    points: 1,
     amountOfAllowedGames: 3
   },
   {
-    value: 2,
+    points: 2,
     amountOfAllowedGames: 4
   },
   {
-    value: 3,
+    points: 3,
     amountOfAllowedGames: 4
   },
   {
-    value: 4,
+    points: 4,
     amountOfAllowedGames: 2
   },
   {
-    value: 6,
+    points: 6,
     amountOfAllowedGames: 1
   },
+]
+
+export const teams: Array<Team> = [
+  {
+    name: "Team-Rot", 
+    color: "red"
+  },
+  {
+    name: "Team-Rot", 
+    color: "blue"
+  }
 ]
