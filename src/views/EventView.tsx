@@ -19,12 +19,13 @@ export const EventView = (): JSX.Element => {
 
   useEffect(() => {
     (async () => {
-      setCurrentGamePlan(await getGamePlanById(id));
-      
-      const foundCurrentDayIndex = findIndex(currentGamePlan?.gameDays, (gameDay) => !!find(gameDay.games, game => !game.winnerTeam))
+      const foundGamePlan: GamePlan = await getGamePlanById(id)
+      setCurrentGamePlan(foundGamePlan);
+
+      const foundCurrentDayIndex = findIndex(foundGamePlan?.gameDays, (gameDay) => !!find(gameDay.games, game => !game.winnerTeam))
       setCurrentDayIndex(foundCurrentDayIndex);
 
-      const currentDay = currentGamePlan?.gameDays[foundCurrentDayIndex];
+      const currentDay = foundGamePlan?.gameDays[foundCurrentDayIndex];
       const foundCurrentGameIndex = findIndex(currentDay?.games, game => !game.winnerTeam);
       setCurrentGameIndex(foundCurrentGameIndex);
     })();
@@ -35,11 +36,8 @@ export const EventView = (): JSX.Element => {
   }
 
   return <div className="w-screen md:w-1/2 ">
-    {`Alkoholbonus: ${currentGamePlan.alcBonus}`}
-    {`Geschicklichkeitsbonus: ${currentGamePlan.dexBonus}`}
-    {`Ausdauerbonus: ${currentGamePlan.endBonus}`}
-    {map(currentGamePlan.gameDays, (gameDay, index) => <GameDayAccordion open={index === currentDayIndex} gameDay={gameDay} teams={teams}>
-      {map(gameDay.games, (game, i) => <GameCard open={i === currentGameIndex} game={game}/>)}
+    {map(currentGamePlan.gameDays, (gameDay, index) => <GameDayAccordion key={gameDay.name} open={index === currentDayIndex} gameDay={gameDay} teams={teams}>
+      {map(gameDay.games, (game, i) => <GameCard key={game.name} open={i === currentGameIndex} game={game}/>)}
     </GameDayAccordion>)}
   </div>
 }
