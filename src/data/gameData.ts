@@ -90,7 +90,7 @@ export const games: Games = [
 export const gameDays: Array<GameDay> = [
   {
     name: "Freitag",
-    hoursToBePlayed: 5,
+    hoursToBePlayed: 4,
   },
   {
     name: "Samstag",
