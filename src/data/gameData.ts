@@ -127,11 +127,11 @@ export const pointBuckets: PointBuckets = [
 
 export const teams: Array<Team> = [
   {
-    name: "Team-Rot", 
+    name: "Rot",
     color: "red"
   },
   {
-    name: "Team-Rot", 
-    color: "blue"
+    name: "Grün",
+    color: "green"
   }
 ]

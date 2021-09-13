@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import { createDB } from './database/database';
 import { register } from './serviceWorkerRegistration';
+import { EventOverView } from './views/EventOverView';
 import { EventView } from './views/EventView';
 import { StartView } from './views/StartView';
 
@@ -19,17 +20,22 @@ function App() {
   });
 
   return (
-    <div className="App bg-secondary min-h-screen flex justify-center">
-      <BrowserRouter>
-        <Switch>
-          <Route path="/game/:id">
-            <EventView />
-          </Route>
-          <Route path="/">
-            <StartView />
-          </Route>
-        </Switch>
-      </BrowserRouter>
+    <div className="App bg-secondary min-h-screen flex justify-center p-4">
+      <div className="inner w-full md:w-1/2">
+        <BrowserRouter>
+          <Switch>
+            <Route path="/games">
+              <EventOverView />
+            </Route>
+            <Route path="/game/:id">
+              <EventView />
+            </Route>
+            <Route path="/">
+              <StartView />
+            </Route>
+          </Switch>
+        </BrowserRouter>
+      </div>
     </div>
   );
 }
