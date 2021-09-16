@@ -26,7 +26,7 @@ export const EventView = (): JSX.Element => {
     const gamesWithWonGame = updateInArrayAtIndex(currentGameDay.games, currentGameIndex!, currentGameAsWon);
     const gameDayWithWonGame: FilledGameDay = {...currentGameDay, games: gamesWithWonGame};
 
-    const updatedGamePlan: GamePlan = {...currentGamePlan!, gameDays: updateInArrayAtIndex(currentGamePlan!.gameDays, currentGameIndex!, gameDayWithWonGame)}
+    const updatedGamePlan: GamePlan = {...currentGamePlan!, gameDays: updateInArrayAtIndex(currentGamePlan!.gameDays, currentDayIndex!, gameDayWithWonGame)}
 
     updateGamePlanById(updatedGamePlan, id);
     loadGamePlan();

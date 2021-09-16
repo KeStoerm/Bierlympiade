@@ -1,4 +1,4 @@
-import { filter, map, reduce } from "lodash";
+import { filter, isEqual, map, reduce } from "lodash";
 import { FilledGameDay, Team } from "../../types/gameTypes";
 
 export const GameDayAccordion = ({open, gameDay, teams, children}: {open: boolean, gameDay: FilledGameDay, teams: Array<Team>, children: JSX.Element[] | JSX.Element}): JSX.Element => {
@@ -8,8 +8,8 @@ export const GameDayAccordion = ({open, gameDay, teams, children}: {open: boolea
       <h3 className="name text-left">{gameDay.name}</h3>
       <div className="games text-center">Gespielt: {filter(gameDay.games, game => game.winnerTeam).length} / {gameDay.games.length}</div>
       <div className="points flex justify-end">
-        {map(teams, team => <span className="headline px-4" style={({color: team.color})}>
-            {reduce(gameDay.games, (acc, game) => game.winnerTeam === team ? acc + game.points : acc, 0)}
+        {map(teams, team => <span key={`score_${team.name}`} className="headline px-4" style={({color: team.color})}>
+            {reduce(gameDay.games, (acc, game) => isEqual(game.winnerTeam, team) ? acc + game.points : acc, 0)}
           </span>
         )}
         <span className="headline px-4">
