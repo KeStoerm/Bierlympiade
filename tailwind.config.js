@@ -1,7 +1,7 @@
 module.exports = {
   purge: {
     content: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
-    safelist: ['hidden', 'text-red-700']
+    safelist: ['hidden', 'text-red-700', 'bg-red-700', 'bg-green-700']
   },
   darkMode: false, // or 'media' or 'class'
   variants: {
