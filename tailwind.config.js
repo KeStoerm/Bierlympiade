@@ -1,7 +1,9 @@
+const possibleTeamColors = ['red', 'yellow', 'green', 'blue', 'purple', 'pink']
+
 module.exports = {
   purge: {
     content: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
-    safelist: ['hidden', 'text-red-700', 'bg-red-700', 'bg-green-700']
+    safelist: ['hidden', ...possibleTeamColors.map((color) => `text-${color}-700`), ...possibleTeamColors.map((color) => `bg-${color}-700`)]
   },
   darkMode: false, // or 'media' or 'class'
   variants: {

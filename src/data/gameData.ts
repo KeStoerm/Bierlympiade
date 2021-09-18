@@ -135,3 +135,5 @@ export const teams: Array<Team> = [
     color: "green"
   }
 ]
+
+export const possibleTeamColors: Array<String> = ['red', 'yellow', 'green', 'blue', 'purple', 'pink']
