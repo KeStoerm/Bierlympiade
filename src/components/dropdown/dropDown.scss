@@ -1,0 +1,30 @@
+.dropdown {
+  .content {
+    transition: height 200ms;
+    display: none;
+
+    &.get-in-enter {
+      height: 0;
+      display: block;
+    }
+    &.get-in-enter-done{
+      height: 8rem;
+      display: block;
+    }
+    &.get-in-enter-active {
+      height: 8rem;
+    }
+    &.get-in-exit {
+      height: 8rem;
+      display: block;
+    }
+    &.get-in-exit-done {
+      height: 0rem;
+      display: none;
+    }
+    &.get-in-exit-active {
+      height: 0rem;
+      
+    }
+  }
+}

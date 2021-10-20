@@ -5,3 +5,11 @@
 .headline {
   font-family: 'Gloria Hallelujah', cursive;
 }
+
+.button {
+  @apply h-12 bg-accent text-secondary flex items-center justify-center;
+}
+
+.button.disabled {
+  @apply opacity-60 cursor-not-allowed;
+}

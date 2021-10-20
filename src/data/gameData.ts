@@ -128,12 +128,14 @@ export const pointBuckets: PointBuckets = [
 export const teams: Array<Team> = [
   {
     name: "Rot",
-    color: "red"
+    color: "red",
+    players: [],
   },
   {
     name: "Grün",
-    color: "green"
+    color: "green",
+    players: [],
   }
 ]
 
-export const possibleTeamColors: Array<String> = ['red', 'yellow', 'green', 'blue', 'purple', 'pink']
+export const possibleTeamColors: Array<string> = ['red', 'yellow', 'green', 'blue', 'purple', 'pink']

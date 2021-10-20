@@ -9,6 +9,7 @@ import { register } from './serviceWorkerRegistration';
 import { EventOverView } from './views/EventOverView';
 import { EventView } from './views/EventView';
 import { StartView } from './views/StartView';
+import { GameCreationView } from './views/gameCreationView/GameCreationView';
 
 
 register();
@@ -24,6 +25,9 @@ function App() {
       <div className="inner w-full md:w-1/2">
         <BrowserRouter>
           <Switch>
+          <Route path="/create">
+              <GameCreationView />
+            </Route>
             <Route path="/games">
               <EventOverView />
             </Route>

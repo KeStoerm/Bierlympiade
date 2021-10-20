@@ -2,9 +2,14 @@ export interface WithId {
   id: IDBValidKey,
 }
 
+export interface Player {
+  name: string,
+}
+
 export interface Team {
   name: string,
   color: string,
+  players: Array<Player>,
 }
 
 export interface Game {
