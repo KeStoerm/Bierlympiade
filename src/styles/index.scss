@@ -7,7 +7,7 @@
 }
 
 .button {
-  @apply h-12 bg-accent text-secondary flex items-center justify-center;
+  @apply h-12 bg-accent text-background flex items-center justify-center;
 }
 
 .button.disabled {

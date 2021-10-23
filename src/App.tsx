@@ -21,7 +21,7 @@ function App() {
   });
 
   return (
-    <div className="App bg-secondary min-h-screen flex justify-center p-4">
+    <div className="App bg-background min-h-screen flex justify-center">
       <div className="inner w-full md:w-1/2">
         <BrowserRouter>
           <Switch>

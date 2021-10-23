@@ -11,7 +11,7 @@ import { AddPlayersStep } from "./steps/AddPlayersStep";
 
 export const GameCreationView = (): JSX.Element => {
   const [currentStep, setCurrentStep] = useState<number>(0);
-  const [players, setPlayer] = useState<Array<Player>>([]);
+  const [players, setPlayers] = useState<Array<Player>>([]);
   const [teams, setTeams] = useState<Array<Team>>([]);
 
   const [currentColor, setCurrentColor] = useState<string>();
@@ -23,7 +23,11 @@ export const GameCreationView = (): JSX.Element => {
   }
 
   const appendPlayer = (player: Player) => {
-    setPlayer([...players, player]);
+    setPlayers([...players, player]);
+  }
+
+  const deletePlayer = (player: Player) => {
+    setPlayers(without(players, player));
   }
 
   const appendTeam = (team: Team) => {
@@ -37,16 +41,17 @@ export const GameCreationView = (): JSX.Element => {
     item: color,
   }))
 
-  return <div className="flex justify-center flex-col items-center">
-    <h2 className="text-accent text-3xl headline mb-12">Neue Bierlympiade</h2>
-    <Stepper currentStep={currentStep}>
-      <AddPlayersStep players={players} onNextClick={() => setCurrentStep(1)} appendPlayer={appendPlayer}/>
+  return <div className="flex flex-col h-screen">
+    <div className="header w-full py-4 bg-secondary">
+      <h2 className="text-accent text-3xl headline text-center">Neue Bierlympiade</h2>
+    </div>
+    <Stepper className="flex-grow" currentStep={currentStep}>
+      <AddPlayersStep players={players} onNextClick={() => setCurrentStep(1)} appendPlayer={appendPlayer} deletePlayer={deletePlayer}/>
       <div className="step-add-teams">
         <div className="teams mt-2 mb-24">
           <h3 className="text-accent text-2xl mb-4">Teams: </h3>
-          {isEmpty(teams)
-          ? <p className="text-accent">Bisher sind noch keine Teams angelegt worden</p>
-          : map(teams, (team) => <div className="team border-accent border-b-2 text-accent px-4 py-1 mb-1 flex"><span className={`h-6 w-6 mr-4 bg-${team.color}-400`}></span><span>{team.name}</span></div>)}
+          {!isEmpty(teams) 
+          && map(teams, (team) => <div className="team border-accent border-b-2 text-accent px-4 py-1 mb-1 flex"><span className={`h-6 w-6 mr-4 bg-${team.color}-400`}></span><span>{team.name}</span></div>)}
         </div>
         <Dropdown elements={dropdownElements} currentElement={find(dropdownElements, (element) => element.item === currentColor)} placeholder="Teamfarbe auswählen" onChange={setCurrentColor}/>
         <div className="mb-4">

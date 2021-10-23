@@ -17,13 +17,13 @@ module.exports = {
           DEFAULT: '#f5f2eb'
         },
         secondary: {
-          DEFAULT: '#4d4d4d'
+          DEFAULT: '#424242'
         },
         accent: {
           DEFAULT: '#dfcaa1'
         },
         background: {
-          DEFAULT: '#f5f2eb'
+          DEFAULT: '#4d4d4d'
         },
       },
     }
