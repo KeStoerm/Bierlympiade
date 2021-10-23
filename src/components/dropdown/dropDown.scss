@@ -1,29 +1,30 @@
 .dropdown {
   .content {
-    transition: height 200ms;
+    transition: max-height 200ms;
     display: none;
+    z-index: 9;
 
     &.get-in-enter {
-      height: 0;
+      max-height: 0;
       display: block;
     }
     &.get-in-enter-done{
-      height: 8rem;
+      max-height: 16rem;
       display: block;
     }
     &.get-in-enter-active {
-      height: 8rem;
+      max-height: 16rem;
     }
     &.get-in-exit {
-      height: 8rem;
+      max-height: 16rem;
       display: block;
     }
     &.get-in-exit-done {
-      height: 0rem;
+      max-height: 0rem;
       display: none;
     }
     &.get-in-exit-active {
-      height: 0rem;
+      max-height: 0rem;
       
     }
   }

@@ -58,5 +58,5 @@ export const generateGamePlan = (games: Games, buckets: PointBuckets, gameDays: 
 
   const pointedGames: Array<PointedGame> = pointGames(sortedRatedGames, sortedBuckets);
 
-  return {alcBonus, endBonus, dexBonus, gameDays: generateGameDays(pointedGames, gameDays)};
+  return {alcBonus, endBonus, dexBonus, gameDays: generateGameDays(pointedGames, gameDays), teams: []};
 }

@@ -55,4 +55,5 @@ export type GamePlan = {
   endBonus: number,
   dexBonus: number,
   gameDays: Array<FilledGameDay>,
+  teams: Array<Team>,
 }

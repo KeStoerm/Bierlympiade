@@ -4,7 +4,7 @@ import { BeerLogo } from "../components/logo/BeerLogo"
 
 export const StartView = (): JSX.Element => {
 
-  return <div className="main h-full flex justify-center flex-col items-center">
+  return <div className="main h-full flex justify-center flex-col items-center p-4">
     <div className="beerLogoWrapper w-40 h-40 mb-4">
       <BeerLogo dotted={false} />
     </div>

@@ -1,4 +1,4 @@
-import { map } from "lodash";
+import { has, map } from "lodash";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { GameCard } from "../components/gameCard/GameCard";
@@ -6,7 +6,8 @@ import { GameDayAccordion } from "../components/gameDayAccordion/GameDayAccordio
 import { teams } from "../data/gameData";
 import { getGamePlanById, updateGamePlanById } from "../database/gamePlanDb";
 import { FilledGameDay, GamePlan, PointedGame, Team } from "../types/gameTypes";
-import { findCurrentGameDayIndex, findCurrentGameIndexInGameDay, updateInArrayAtIndex } from '../utils/gamePlanUtils';
+import { findCurrentGameDayIndex, findCurrentGameIndexInGameDay } from '../utils/gamePlanUtils';
+import { updateInArrayAtIndex } from "../utils/generalUtils";
 
 type Params = {
   id: string,
@@ -53,7 +54,7 @@ export const EventView = (): JSX.Element => {
 
   return <div className="">
     {map(currentGamePlan.gameDays, (gameDay, index) => <GameDayAccordion key={gameDay.name} open={index === currentDayIndex} gameDay={gameDay} teams={teams}>
-      {map(gameDay.games, (game, i) => <GameCard onTeamWon={(team) => winTeam(team)} key={game.name} open={i === currentGameIndex} game={game}/>)}
+      {map(gameDay.games, (game, i) => <GameCard teams={currentGamePlan.teams} onTeamWon={(team) => winTeam(team)} key={game.name} open={i === currentGameIndex} game={game}/>)}
     </GameDayAccordion>)}
   </div>
 }

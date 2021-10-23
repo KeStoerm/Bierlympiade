@@ -1,11 +1,10 @@
 import { map, times } from 'lodash';
-import { teams } from '../../data/gameData';
 import { PointedGame, Team } from '../../types/gameTypes';
 import { BeerLogo } from '../logo/BeerLogo';
 import { LongPressButton } from '../longPressButton/LongPressButton';
 import './gameCard.scss';
 
-export const GameCard = ({game, open, onTeamWon}: {game: PointedGame, open: boolean, onTeamWon: (team: Team) => void}): JSX.Element => {
+export const GameCard = ({game, open, teams, onTeamWon}: {game: PointedGame, teams: Array<Team>, open: boolean, onTeamWon: (team: Team) => void}): JSX.Element => {
   const classes = open ? "" : "hidden";
   const winningTeam = game.winnerTeam;
   const getTeamColor = (team: Team) => `${team.color}-700`;
