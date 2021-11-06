@@ -4,7 +4,7 @@ import { Stepper } from "../../components/stepper/Stepper";
 import { gameDays, games, pointBuckets } from "../../data/gameData";
 import { saveGamePlan } from "../../database/gamePlanDb";
 import { Player, Team } from "../../types/gameTypes";
-import { generateGamePlan } from "../../utils/gamePlanGenerationUtils";
+import { annealGamePlan } from "../../utils/gamePlanAnnealingUtils";
 import { updateInArrayAtIndex } from "../../utils/generalUtils";
 import { AddPlayersStep } from "./steps/AddPlayersStep";
 import { AddTeamsStep } from "./steps/AddTeamsStep";
@@ -15,7 +15,7 @@ export const GameCreationView = (): JSX.Element => {
   const [teams, setTeams] = useState<Array<Team>>([]);
   
   const createNewGamePlan = () => {
-    const generatedGames = generateGamePlan(games, pointBuckets, gameDays);
+    const generatedGames = annealGamePlan(games, pointBuckets, gameDays);
     const gamePlan = {
       ...generatedGames,
       teams: teams,

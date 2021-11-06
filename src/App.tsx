@@ -10,13 +10,15 @@ import { EventOverView } from './views/EventOverView';
 import { EventView } from './views/EventView';
 import { StartView } from './views/StartView';
 import { GameCreationView } from './views/gameCreationView/GameCreationView';
-
+import { annealGamePlan } from './utils/gamePlanAnnealingUtils';
+import { gameDays, games, pointBuckets } from './data/gameData';
 
 register();
 
 
 function App() {
   useEffect(() => {
+    annealGamePlan(games, pointBuckets, gameDays);
     (async () => await createDB())();
   });
 

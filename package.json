@@ -24,6 +24,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-transition-group": "^4.4.2",
+    "simulated-annealing": "^1.0.2",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.7",
     "typescript": "^4.3.5",
     "use-long-press": "^1.1.1",
