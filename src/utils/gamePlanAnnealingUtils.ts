@@ -5,6 +5,9 @@ import { removeElementFromArrayAtIndex, switchElementsBetweenArrays, updateInArr
 // @ts-ignore
 import simulatedAnnealing from 'simulated-annealing';
 
+const SEPERATION_SCORE_FACTOR = 1;
+const FLUCTUATION_SCORE_FACTOR = 1;
+
 interface Tooling {
   toolingCondition: (firstGameDay: FilledGameDay, secondGameDay: FilledGameDay) => boolean,
   toolingFunction: (firstRandomDayIndex: number, secondRandomDayIndex: number, firstRandomGameIndex: number,
@@ -70,13 +73,11 @@ export const determineNewState = (gameDays: Array<FilledGameDay>): Array<FilledG
   const possibleToolings = compact(map(toolings, tooling => tooling.toolingCondition(firstRandomDay, secondRandomDay) ? tooling.toolingFunction : null));
 
   if(size(possibleToolings) > 0) {
-    console.log("use tooling")
     const randomTooling = possibleToolings[random(0, size(possibleToolings) - 1, false)];
 
     return randomTooling(firstRandomDayIndex, secondRandomDayIndex, firstRandomGameIndex, secondRandomGameIndex, gameDays);
   }
 
-  console.log("do nothing")
   return gameDays;
 }
 
@@ -92,8 +93,34 @@ export const determineSeperationScore = (gameDays: Array<FilledGameDay>): number
   }));
 }
 
+export const determineFluctuationScore = (gameDays: Array<FilledGameDay>): number => {
+  const scores = map(gameDays, gameDay => {
+    const games = gameDay.games;
+
+    let score = 0;
+    for (let i = 0; i < size(games) - 1; i++) {
+      const currentGame = games[i];
+      const nextGame = games[i + 1];
+
+      const difference = Math.abs(currentGame.points - nextGame.points);
+
+      const highestPoints = currentGame.points > nextGame.points ? currentGame.points : nextGame.points;
+
+      score += highestPoints - difference;
+    }
+
+    return score;
+  })
+
+  return sum(scores);
+}
+
 export const determineCurrentScore = (gameDays: Array<FilledGameDay>): number => {
-  return determineSeperationScore(gameDays);
+  const scores = [
+    determineSeperationScore(gameDays) * SEPERATION_SCORE_FACTOR,
+    determineFluctuationScore(gameDays) * FLUCTUATION_SCORE_FACTOR,
+  ]
+  return sum(scores);
 }
 
 export const determineTemperature = (temp: number): number => {
@@ -118,9 +145,6 @@ export const annealGamePlan = (games: Games, pointBuckets: PointBuckets, gameDay
 
   console.log("new score");
   console.log(annealedGameDays);
-  console.log(reduce(annealedGameDays[0].games, (prev, curr) => prev + curr.points, 0));
-  console.log(reduce(annealedGameDays[1].games, (prev, curr) => prev + curr.points, 0));
-  console.log(reduce(annealedGameDays[2].games, (prev, curr) => prev + curr.points, 0));
   console.log(determineCurrentScore(annealedGameDays));
 
   return {
