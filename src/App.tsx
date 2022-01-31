@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import {
   BrowserRouter,
   Switch,
@@ -13,31 +13,24 @@ import { GameCreationView } from './views/gameCreationView/GameCreationView';
 import { annealGamePlan } from './utils/gamePlanAnnealingUtils';
 import { gameDays, games, pointBuckets } from './data/gameData';
 import { initializeApp } from '@firebase/app';
-import { authenticateWithGoogle } from './authentication/authenticationUtils';
-import { getAuth } from "firebase/auth";
 import { firebaseConfig } from './config/firebaseConfig';
-import { useAuthState } from 'react-firebase-hooks/auth';
+import { Headbar } from './components/headbar/Headbar';
 
 const app = initializeApp(firebaseConfig);
-
-const auth = getAuth();
 
 register();
 
 function App() {
-  const [user, loading] = useAuthState(auth);
 
   useEffect(() => {
-    if (!loading) {
-      user || authenticateWithGoogle();
-      annealGamePlan(games, pointBuckets, gameDays);
-      (async () => await createDB())();
-    }
-  }, [loading]);
+    annealGamePlan(games, pointBuckets, gameDays);
+    (async () => await createDB())();
+  }, []);
 
   return (
     <div className="App bg-background min-h-screen flex justify-center">
-      <div className="inner w-full md:w-1/2">
+      <div className="inner flex flex-col w-full md:w-1/2">
+        <Headbar />
         <BrowserRouter>
           <Switch>
           <Route path="/create">
