@@ -1,10 +1,10 @@
+import { User } from "firebase/auth";
 import { getDatabase, push, ref } from "firebase/database";
 import { omit } from 'lodash';
 import { GamePlan } from '../types/gameTypes';
 
-export const saveFinishedGame = (finishedGame: GamePlan) => {
+export const saveFinishedGame = (finishedGame: GamePlan, user: User) => {
   const remoteDatabase = getDatabase();
-  const validFinishedGame = omit(finishedGame, "id")  
-  console.log(validFinishedGame);
-  push(ref(remoteDatabase, "games"), validFinishedGame);
+  const validFinishedGame = omit(finishedGame, "id");
+  push(ref(remoteDatabase, `${user.uid}/games`), validFinishedGame);
 }

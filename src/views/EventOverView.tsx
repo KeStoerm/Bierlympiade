@@ -1,5 +1,7 @@
+import { getAuth } from 'firebase/auth';
 import { map } from 'lodash';
 import { useEffect, useState } from 'react'
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import { saveFinishedGame } from '../controller/gameController';
 import { getAllGamePlans } from '../database/gamePlanDb';
@@ -7,7 +9,11 @@ import { GamePlan, WithId } from '../types/gameTypes'
 import { findCurrentGame, findCurrentGameDay, isGamePlanFinished } from '../utils/gamePlanUtils';
 
 export const EventOverView = (): JSX.Element => {
+  const auth = getAuth();
   const [gamePlans, setGamePlans] = useState<Array<GamePlan & WithId>>();
+  const [user, loading] = useAuthState(auth);
+
+  const isSaveEnabled = user && !loading;
 
   useEffect(() => {
     (async () => {
@@ -25,7 +31,7 @@ export const EventOverView = (): JSX.Element => {
       <div className="cardHead flex justify-between w-full pb-4 headline">
         <h4 className="gameDay">{currentGameDayName}</h4>
         <div className="game">{currentGameName}</div>
-        <button onClick={() => saveFinishedGame(gamePlan)}>speichern</button>
+        <button onClick={() => isSaveEnabled && saveFinishedGame(gamePlan, user!)} disabled={!isSaveEnabled}>speichern</button>
       </div>
       <div className="cardBody pl-4">
       </div>
